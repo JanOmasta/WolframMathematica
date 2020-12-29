@@ -45,11 +45,11 @@ Do[
  {n,0,pocetopakovani}]
 
 TableForm[Table[{n,NumberForm[a[n],10],
-NumberForm[c[n],10],NumberForm[d[n],10],
-NumberForm[b[n],10],NumberForm[f[c[n]],10],
-NumberForm[f[d[n]],10]},{n,0,pocetopakovani}],
+		NumberForm[c[n],10],NumberForm[d[n],10],
+		NumberForm[b[n],10],NumberForm[f[c[n]],10],
+		NumberForm[f[d[n]],10]},{n,0,pocetopakovani}],
  	TableHeadings->{None,{"n","an","cn","dn","bn",
-"f(cn)","f(dn)"}},
+				"f(cn)","f(dn)"}},
  	TableSpacing->{1,5}]
 
 (*3.)*)
