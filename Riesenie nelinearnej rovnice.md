@@ -18,13 +18,13 @@ Najdete korene nelinearnej rovnice -2x+log(x)+3=0 na internvale [-1,4].
 f[x_]=-2*x+Log[x]+3
 Plot[f[x],{x,-1,4}		
 
-(*2.*)
+(*2.)*)
 Plot[f[x],{x,1,3}]
 f[1.5]*f[2.5]<0		
 (*Vystup je True. Teda existuje koren a v okoli korena je funkcia spojita.*)
 
-(*3.*)
-(*Volim startovacie body x0=1 a x1=1.5*
+(*3.)*)
+(*Volim startovacie body x0=1 a x1=1.5*)
 Clear[f,x]
 f[x_]=-2*x+Log[x]+3;
 x[0]=1;
@@ -38,11 +38,11 @@ TableForm[Table[{i,NumberForm[x[i],10],Abs[x[i+1]-x[i]]},  	       {i,0,pocetopa
  	TableHeadings->{None,{"i","xi","|xi+1-xi|"}},
  	TableSpacing->{1,5}]
 
-(*4.*)
+(*4.)*)
 (*Na vypocet korena je potrebnych 4 iteracie. Funkcia nadobuda koren priblizne v bode x=1.791527687. Priblizna hodnota korena na 16 desatinnych miest je:*)
 NumberForm[x[4],16]
 
-(*5.*)
+(*5.)*)
 Plot[f'[x],{x,1,3}]	(*Prva derivacia funkcie f(x).*)
 f'[3]//N
 Abs[f[x[4]]]/f'[3]	(*Odhad chyby.*)
