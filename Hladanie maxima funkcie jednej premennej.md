@@ -4,7 +4,7 @@
 
 (*
 ZADANIE:
-Numerickymi metodami najdite maximum funkcie f(x)=3-1.2x+ln(-2+x)na internvale [2,5].
+Numerickymi metodami najdite maximum funkcie f(x)=3-1.2x+ln(-2+x)   na internvale [2,5].
 
 1.) Urobte analyzu ulohy, zistite, v ktorom intervale sa nachadza bod xmax, v ktorom zadana funkcia dosahuje maximum. Na tomto intervale overte splnenie podmienky unimodalnosti.
 2.) Maximum funkcie najdite metodou Golden Ratio Serch. V ktorom intervale sa nachadza xmax funkcie s presnostou 10^-4 vzhladom na dlzku intervalu [c,d]?
@@ -37,7 +37,7 @@ Do[
   	d[n+1]=c[n];
   	c[n+1]=a[n]+(1-r)*(b[n]-a[n]);
   	a[n+1]=a[n],
-  a[n+1]=c[n];
+  	a[n+1]=c[n];
   	c[n+1]=d[n];
   	d[n+1]=b[n]-(1-r)*(b[n]-a[n]);
   	b[n+1]=b[n]];
