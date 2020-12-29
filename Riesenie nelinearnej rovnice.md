@@ -34,7 +34,7 @@ tolerancia=10^(-5);
 Do[x[i+1]=x[i]-f[x[i]]*(x[i]-x[i-1])/(f[x[i]]-f[x[i-1]])//N;
  If[Abs[x[i+1]-x[i]]<tolerancia,Break[]],
  {i,1,pocetopakovani}]
-TableForm[Table[{i,NumberForm[x[i],10],Abs[x[i+1]-x[i]]},  	       {i,0,pocetopakovani}],
+TableForm[Table[{i,NumberForm[x[i],10],Abs[x[i+1]-x[i]]},{i,0,pocetopakovani}],
  	TableHeadings->{None,{"i","xi","|xi+1-xi|"}},
  	TableSpacing->{1,5}]
 
