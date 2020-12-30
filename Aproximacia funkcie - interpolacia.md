@@ -18,8 +18,7 @@ Pomocou tabulky diferencii najdite Newtonov interpolacny polynom 3. stupna, pomo
 
 (*RIESENIE*)
 (*1.)*)
-data={{-2.3,31.462},{0.263,-0.522},{1.056,1.291},
-{3.397,-14.724}}
+data={{-2.3,31.462},{0.263,-0.522},{1.056,1.291},{3.397,-14.724}}
 
 polynom[x_]=a*x^3+b*x^2+c*x+d
 
