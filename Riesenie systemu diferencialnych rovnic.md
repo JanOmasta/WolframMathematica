@@ -100,7 +100,7 @@ Do[
  x[i+1]=x[i]+h//N;
  k1=A.y[i] +g[x[i]];
  k2=A.(y[i]+h/2*k1)+g[x[i]+h/2];
- k3=A. (y[i]+h/2*k2)+g[x[i]+h/2] ;
+ k3=A.(y[i]+h/2*k2)+g[x[i]+h/2];
  k4=A.(y[i]+h*k3)+g[x[i]+h];
  y[i+1]=y[i]+h/6*(k1+2k2+2k3+k4)//N,
  {i,0,pocetiteracii}]
@@ -110,7 +110,7 @@ TableForm[
   Abs[y[i][[2]]-yp2[x[i]]],
   Sqrt[(y[i][[1]]-yp1[x[i]])^2+(y[i][[2]]-yp2[x[i]])^2]},{i,0,pocetiteracii}],
 
- TableHeadings®{None,{"xi","y1i","y2i", "chyba |yp-y1i|","chyba |yp-y2i|","celková glob. chyba"}},
+ TableHeadings->{None,{"xi","y1i","y2i", "chyba |yp-y1i|","chyba |yp-y2i|","celková glob. chyba"}},
  	TableSpacing->{1,3}]
 
 (*Porovnanie presneho a priblizneho riesenia:*)
