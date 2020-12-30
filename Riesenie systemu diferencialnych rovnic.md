@@ -8,6 +8,8 @@ Dany je system dvoch diferencialnych rovnic: y1'=2y1-y2-x a y2'=3y1-2y2+3x2 so z
 
 1.) Najdite jeho presne analyticke riesenie. Vysetrite existenciu a jednoznacnost jeho riesenia na zadanom intervale.
 2.) Vypocitajte priblizne riesenie pomocou explicitnej jednokrokovej metody Euler s krokom h=0.1.
+3.) Vypocitajte priblizne riesenie pomocou explicitnej jednokrokovej metody Runge-Kutta 4.radu s krokom h=0.1.
+
 *)
 
 (*RIESENIE*)
@@ -64,10 +66,62 @@ Do[
 TableForm[
  Table[{x[i],y[i][[1]],y[i][[2]],Abs[y[i][[1]]-yp1[x[i]]],
   Abs[y[i][[2]]-yp2[x[i]]],
-  Sqrt[(y[i][[1]]-yp1[x[i]])^2+(y[i][[2]]-yp2[x[i]])^2]},   {i,0,pocetiteracii}],
- TableHeadings->{None,{"xi","y1i","y2i", "chyba |yp-y1i|","chyba |yp-y2i|","celková glob. chyba"}},
+  Sqrt[(y[i][[1]]-yp1[x[i]])^2+(y[i][[2]]-yp2[x[i]])^2]},{i,0,pocetiteracii}],
+ 
+TableHeadings->{None,{"xi","y1i","y2i", "chyba |yp-y1i|","chyba |yp-y2i|","celková glob. chyba"}},
  	TableSpacing->{1,3}]
 
+(*Porovnanie presneho a priblizneho riesenia:*)
+Clear[data,ge1]
+data=Table[{x[i],y[i][[1]]},{i,0,pocetiteracii}];
+ge1=ListPlot[data,PlotStyle->{PointSize[0.015],Red}];
+Show[gr1,ge1]
 
+Clear[data,ge2]
+data=Table[{x[i],y[i][[2]]},{i,0,pocetiteracii}];
+ge2=ListPlot[data,PlotStyle->{PointSize[0.015],Green}];
+Show[gr2,ge2]
 
+Show[gr1,gr2,ge1,ge2,PlotRange->{-5,20}]
 
+(*3.)*)
+Clear[x,A,g,y]        
+A={{2,-1},{3,-2}};
+g[x_]={-x,3*x^2};
+y[0]={1,-2};
+x[0]=0;
+h=0.1;
+pocetiteracii=30;
+Print["A = ",A//MatrixForm]
+Print["g[x] = ",g[x]//MatrixForm]
+
+Clear[k1,k2,k3,k4]
+Do[	
+ x[i+1]=x[i]+h//N;
+ k1=A.y[i] +g[x[i]];
+ k2=A.(y[i]+h/2*k1)+g[x[i]+h/2];
+ k3=A. (y[i]+h/2*k2)+g[x[i]+h/2] ;
+ k4=A.(y[i]+h*k3)+g[x[i]+h];
+ y[i+1]=y[i]+h/6*(k1+2k2+2k3+k4)//N,
+ {i,0,pocetiteracii}]
+
+TableForm[
+ Table[{x[i],y[i][[1]],y[i][[2]],Abs[y[i][[1]]-yp1[x[i]]],
+  Abs[y[i][[2]]-yp2[x[i]]],
+  Sqrt[(y[i][[1]]-yp1[x[i]])^2+(y[i][[2]]-yp2[x[i]])^2]},{i,0,pocetiteracii}],
+
+ TableHeadings®{None,{"xi","y1i","y2i", "chyba |yp-y1i|","chyba |yp-y2i|","celková glob. chyba"}},
+ 	TableSpacing->{1,3}]
+
+(*Porovnanie presneho a priblizneho riesenia:*)
+Clear[data,gRK1]
+data=Table[{x[i],y[i][[1]]},{i,0,pocetiteracii}];
+gRK1=ListPlot[data,PlotStyle->PointSize[0.015],Red}];
+Show[gr1,gRK1]
+
+Clear[data,gRK2]
+data=Table[{x[i],y[i][[2]]},{i,0,pocetiteracii}];
+gRK2=ListPlot[data,PlotStyle->{PointSize[0.015],Green}];
+Show[gr2,gRK2]
+
+Show[gr1,gr2,gRK1,gRK2,PlotRange->{-5,20}]
