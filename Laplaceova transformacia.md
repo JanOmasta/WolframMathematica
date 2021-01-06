@@ -21,14 +21,19 @@ Laplaceovej transformácie možno rozdeli do troch krokov:
 3.)	Urobí sa spätná (inverzná) Laplaceova transformácia.
 	Spätnou Laplaceovou transformáciou sa získa originál k
 	obrazu riešenia diferenciálnej rovnice, a teda riešenie
-	diferenciálnej rovnice v èasovej oblasti.	
+	diferenciálnej rovnice v èasovej oblasti.
+Benefitom Laplaceovej transformácie je u¾ahèenie výpoètu
+diferencálnej rovnice (a systému rovníc) kvôli tomu, že prevádza
+riešenie diferenciálnej rovnice na algebraickú rovnicu, èo sa
+používa hlavne vo fyzike a elektrotechnickom inžinierstve. 	
 
 
 ZADANIE:
 Riešte diferencialnu rovnicu: y''(t)- 9*y(t)=u(t) so zaèiatoènými podmienkami y(0)=0, y'(0)=1, kde u(t)=2-t.
 *)
 
-(*RIESENIE*)
+(*RIESENIE:*)
+
 step1=LaplaceTransform[y''[t]-9*y[t]==2-t,t,p]
 
 step2=step1/.{x[0]->0,x'[0]->1}
